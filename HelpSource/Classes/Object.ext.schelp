@@ -1,0 +1,9 @@
+INSTANCEMETHODS::
+
+subsection:: Extensions by PipeFunctionChaining
+
+METHOD:: |>
+See link::Overviews/PipeFunctionChaining::
+
+METHOD:: <|
+See link::Overviews/PipeFunctionChaining::
