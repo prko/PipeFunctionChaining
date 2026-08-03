@@ -10,8 +10,12 @@ A way of chaining function calls together. Here, each _ becomes the result of th
 
 With UGens
 code::
-SinOsc.ar(440) |> LPF.ar(_, \lpf.kr(15000)) |> HPF.ar(_, \hpf.kr(20)) 
+(
+{
+SinOsc.ar(440) |> LPF.ar(_, \lpf.kr(15000)) |> HPF.ar(_, \hpf.kr(20))
 |> Out.ar(\out.kr(0), _);
+}.play
+)
 ::
 A sine wave that is filtered by a low pass, then high pass, then outputted.
 
@@ -37,7 +41,11 @@ code::
 
 With UGens
 code::
+(
+{
 Out.ar(\out.kr(0), _) <| HPF.ar(_, \hpf.kr(20)) <| LPF.ar(_, \lpf.kr(15000)) <| SinOsc.ar(440)
+}.play
+)
 ::
 
 section:: Gotchas
@@ -68,7 +76,7 @@ However this mostly goes away if you call messages with a . on the underscore.
 
 section:: Multi-arity functions are messy.
 code::
--1 |> (_.neg) |> (_ * 3.5) |> { |r| 
+-1 |> (_.neg) |> (_ * 3.5) |> { |r|
 	2 |> (_.sin) |> { |two|
 		4 |> _.pow(two) |> _.round(r)
 	}
